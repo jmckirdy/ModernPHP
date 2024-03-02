@@ -1,2 +1,4 @@
-"Initial Git Test -- just testing" 
-adding...
+-Initial Git Test -- just testing 
+
+-now to update this repos use: git push repoName HEAD:master
+(since master is where the code files are, as main is behind)
