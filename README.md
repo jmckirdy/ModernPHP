@@ -1,2 +1,2 @@
 # ModernPHP
-testing out PDO, and other PHP things
+Testing out PDO, and other PHP things
