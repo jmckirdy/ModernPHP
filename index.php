@@ -18,14 +18,16 @@ require_once('db.inc.php');
   <main>
     <p>If you see this then the database connected.</p>
     <?php
-    //retrieve and display data
-    //without passing in parameters
-    $basicSQL = "SELECT * FROM achievements";
-    $recordset = $conn->query($basicSQL);
-    while($row = $recordset->fetch() ){ echo "row<br/>"; }
+    // //retrieve and display data
+    // //without passing in parameters
+    // $basicSQL = "SELECT * FROM movies";
+    // $recordset = $conn->query($basicSQL);
+    // while($row = $recordset->fetch() ){ echo "row<br/>"; }
     
+
+
     //passing in parameters using the prepare() and execute() method
-    $strSQL= "SELECT * FROM achievements WHERE id < 10"; 
+    $strSQL= "SELECT * FROM movies WHERE director = 'David Yates'"; 
     $short_desc = "I AM LUUUURRRRRR!!!";
     $prepared = $conn->prepare($strSQL);
     $prepared->execute(array($short_desc));
@@ -39,10 +41,10 @@ require_once('db.inc.php');
       //loop through rows in recordset
       while($row = $prepared->fetch() ){ 
         echo "<tr>";
-         echo "<td>" . $row['id'] . "</td>";
-        //  echo "<td>" . $row['picture'] . "</td>";
-         echo "<td>" . $row['start_time'] . "</td>";
-         echo "<td>" . $row['short_desc'] . "</td>";
+         echo "<td>" . $row['movie_id'] . "</td>";
+         echo "<td>" . $row['year'] . "</td>";
+         echo "<td>" . $row['movie_title'] . "</td>";
+         echo "<td>" . $row['director'] . "</td>";
         echo "</tr>"; 
       }
       echo "</table>";
