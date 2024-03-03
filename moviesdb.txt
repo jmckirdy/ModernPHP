@@ -1,0 +1,18 @@
+-- FORMAT LIKE THIS
+// 9 is genre_id  (Classic)
+
+SULLIVAN'S TRAVELS 
+9
+1941
+Joel McCrea, Veronica Lake, Robert Warwick, William Demarest
+Preston Sturges
+CASABLANCA 
+9
+1942
+Humphrey Bogart, Ingrid Bergman, Paul Henreid, Claude Rains
+Michael Curtiz
+CITIZEN KANE 
+9
+1941
+Orson Welles, Joseph Cotten, Ruth Warrick, Everett Sloane
+Orson Welles

@@ -11,7 +11,7 @@ import pyautogui
 bigString = pyperclip.paste()
 bigList = bigString.split('\r\n')
 
-num = 0
+num = -1
 
 def outsideLoop():
     global num
@@ -21,13 +21,13 @@ def outsideLoop():
 
 for x in range(3):    
     #click insert, Position(x=586, y=150)
-    pyautogui.moveTo(655, 163, duration=3)
+    pyautogui.moveTo(655, 163, duration=1)
     pyautogui.click()
 
     #click title box, Position(x=670, y=258)
     pyautogui.moveTo(700, 300, duration=1)
     pyautogui.click()
-    pyperclip.copy(str(bigList[num]))
+    pyperclip.copy(str(bigList[outsideLoop()]))
     #copy title line 1
     pyautogui.hotkey('ctrl', 'v')
 
