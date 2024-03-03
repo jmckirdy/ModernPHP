@@ -27,7 +27,9 @@ require_once('db.inc.php');
 
 
     //passing in parameters using the prepare() and execute() method
-    $strSQL= "SELECT * FROM movies WHERE director = 'David Yates'"; 
+    // $strSQL= "SELECT * FROM movies WHERE genre_id = 9"; 
+    $strSQL= "SELECT * FROM movies"; 
+
     $short_desc = "I AM LUUUURRRRRR!!!";
     $prepared = $conn->prepare($strSQL);
     $prepared->execute(array($short_desc));
@@ -44,6 +46,8 @@ require_once('db.inc.php');
          echo "<td>" . $row['movie_id'] . "</td>";
          echo "<td>" . $row['year'] . "</td>";
          echo "<td>" . $row['movie_title'] . "</td>";
+         echo "<td> Genre_id: " . $row['genre_id'] . "</td>";
+         echo "<td>" . $row['starring'] . "</td>";
          echo "<td>" . $row['director'] . "</td>";
         echo "</tr>"; 
       }
@@ -67,7 +71,7 @@ require_once('db.inc.php');
     
 
 
-    
+
     //  BIND COLUMN
 
     // if($named->rowCount() > 0){
