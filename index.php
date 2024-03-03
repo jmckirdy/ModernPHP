@@ -49,7 +49,7 @@ require_once('db.inc.php');
       }
       echo "</table>";
     }else{
-      echo '<p>No users found that match your value.</p>';
+      echo '<p>No movies found that match that director.</p>';
     }
     
 
@@ -65,6 +65,11 @@ require_once('db.inc.php');
     // $named = $conn->prepare($namedSQL);
     // $named->execute(array(':em'=>$em,':un'=>$user));
     
+
+
+    
+    //  BIND COLUMN
+
     // if($named->rowCount() > 0){
     //   // $named->setFetchMode(PDO::FETCH_ASSOC);
     //   $named->bindColumn(1, $id);
