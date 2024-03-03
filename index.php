@@ -20,15 +20,15 @@ require_once('db.inc.php');
     <?php
     //retrieve and display data
     //without passing in parameters
-    $basicSQL = "SELECT * FROM users";
+    $basicSQL = "SELECT * FROM achievements";
     $recordset = $conn->query($basicSQL);
     while($row = $recordset->fetch() ){ echo "row<br/>"; }
     
     //passing in parameters using the prepare() and execute() method
-    $strSQL= "SELECT * FROM users WHERE user_name = ?"; 
-    $username = "steve";
+    $strSQL= "SELECT * FROM achievements WHERE id < 10"; 
+    $short_desc = "I AM LUUUURRRRRR!!!";
     $prepared = $conn->prepare($strSQL);
-    $prepared->execute(array($username));
+    $prepared->execute(array($short_desc));
     
     //check for number of rows
     if($prepared->rowCount() > 0){
@@ -39,10 +39,10 @@ require_once('db.inc.php');
       //loop through rows in recordset
       while($row = $prepared->fetch() ){ 
         echo "<tr>";
-         echo "<td>" . $row['user_id'] . "</td>";
-         echo "<td>" . $row['user_name'] . "</td>";
-         echo "<td>" . $row['first_name'] . "</td>";
-         echo "<td>" . $row['last_name'] . "</td>";
+         echo "<td>" . $row['id'] . "</td>";
+        //  echo "<td>" . $row['picture'] . "</td>";
+         echo "<td>" . $row['start_time'] . "</td>";
+         echo "<td>" . $row['short_desc'] . "</td>";
         echo "</tr>"; 
       }
       echo "</table>";
@@ -50,44 +50,49 @@ require_once('db.inc.php');
       echo '<p>No users found that match your value.</p>';
     }
     
-    //Using named parameters
-    $namedSQL= "SELECT user_id, email, first_name, last_name  
-        FROM users 
-        WHERE user_name=:un OR email LIKE :em"; 
-    $user = "bob";
-    $em = "%@gmail.com";
+
+
+
+    // //Using named parameters
+    // $namedSQL= "SELECT user_id, email, first_name, last_name  
+    //     FROM users 
+    //     WHERE user_name=:un OR email LIKE :em"; 
+    // $user = "bob";
+    // $em = "%@gmail.com";
     
-    $named = $conn->prepare($namedSQL);
-    $named->execute(array(':em'=>$em,':un'=>$user));
+    // $named = $conn->prepare($namedSQL);
+    // $named->execute(array(':em'=>$em,':un'=>$user));
     
-    if($named->rowCount() > 0){
-      // $named->setFetchMode(PDO::FETCH_ASSOC);
-      $named->bindColumn(1, $id);
-      $named->bindColumn(2, $e);
-      $named->bindColumn(3, $f);
-      $named->bindColumn(4, $l);
+    // if($named->rowCount() > 0){
+    //   // $named->setFetchMode(PDO::FETCH_ASSOC);
+    //   $named->bindColumn(1, $id);
+    //   $named->bindColumn(2, $e);
+    //   $named->bindColumn(3, $f);
+    //   $named->bindColumn(4, $l);
       
       
-      echo "<table>";
-      //loop through rows in recordset
-      while($row = $named->fetch() ){ 
-        echo "<tr>";
-        //  echo "<td>" . $row['user_id'] . "</td>";
-         echo "<td>" . $id . "</td>";
-        //  echo "<td>" . $row['email'] . "</td>";
-         echo "<td>" . $e . "</td>";
-        //  echo "<td>" . $row['first_name'] . "</td>";
-         echo "<td>" . $f . "</td>";
-        //  echo "<td>" . $row['last_name'] . "</td>";
-         echo "<td>" . $l . "</td>";
-        echo "</tr>"; 
-      }
-      echo "</table>";
-    }else{
-      echo '<p>No users found that match your value.</p>';
-    }
+    //   echo "<table>";
+    //   //loop through rows in recordset
+    //   while($row = $named->fetch() ){ 
+    //     echo "<tr>";
+    //     //  echo "<td>" . $row['user_id'] . "</td>";
+    //      echo "<td>" . $id . "</td>";
+    //     //  echo "<td>" . $row['email'] . "</td>";
+    //      echo "<td>" . $e . "</td>";
+    //     //  echo "<td>" . $row['first_name'] . "</td>";
+    //      echo "<td>" . $f . "</td>";
+    //     //  echo "<td>" . $row['last_name'] . "</td>";
+    //      echo "<td>" . $l . "</td>";
+    //     echo "</tr>"; 
+    //   }
+    //   echo "</table>";
+    // }else{
+    //   echo '<p>No users found that match your value.</p>';
+    // }
     
       
+
+
     ?>
     <!-- <p><a href="#">Save Data</a></p>
     <p><a href="#">Master - Detail</a></p> -->
