@@ -27,12 +27,12 @@ require_once('db.inc.php');
 
 
     //passing in parameters using the prepare() and execute() method
-    // $strSQL= "SELECT * FROM movies WHERE genre_id = 9"; 
-    $strSQL= "SELECT * FROM movies"; 
+    $strSQL= "SELECT * FROM movies WHERE genre_id = 2"; 
+    // $strSQL= "SELECT * FROM movies"; 
 
-    $short_desc = "I AM LUUUURRRRRR!!!";
+    $movie_title = "Alien";
     $prepared = $conn->prepare($strSQL);
-    $prepared->execute(array($short_desc));
+    $prepared->execute(array($movie_title));
     
     //check for number of rows
     if($prepared->rowCount() > 0){
@@ -40,6 +40,15 @@ require_once('db.inc.php');
       // $prepared->setFetchMode(PDO::FETCH_BOTH);
       $prepared->setFetchMode(PDO::FETCH_ASSOC);
       echo "<table>";
+        echo "<tr>";
+          echo "<th>Movie Id</th>";
+          echo "<th>Year</th>";
+          echo "<th>Title</th>";
+          echo "<th>Genre</th>";
+          echo "<th>Starring</th>";
+          echo "<th>Director</th>";
+        echo "</tr>";
+      
       //loop through rows in recordset
       while($row = $prepared->fetch() ){ 
         echo "<tr>";
