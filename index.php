@@ -27,10 +27,11 @@ require_once('db.inc.php');
 
 
     //passing in parameters using the prepare() and execute() method
-    $strSQL= "SELECT * FROM movies WHERE genre_id = 2"; 
+    // use with WHERE clause, ? means the value of $movie_title
+    $strSQL= "SELECT * FROM movies WHERE movie_title = ?"; 
     // $strSQL= "SELECT * FROM movies"; 
+    $movie_title = "Pinocchio";
 
-    $movie_title = "Alien";
     $prepared = $conn->prepare($strSQL);
     $prepared->execute(array($movie_title));
     
